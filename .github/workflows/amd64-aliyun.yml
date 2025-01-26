@@ -38,10 +38,7 @@ jobs:
             docker tag "${image}" registry.cn-hangzhou.aliyuncs.com/main-img/main-repo:"${image_name}"
             echo "pushing 【registry.cn-hangzhou.aliyuncs.com/main-img/main-repo:${image_name}】 image to aliyun"
             docker push registry.cn-hangzhou.aliyuncs.com/main-img/main-repo:"${image_name}"
-            echo "push to aliyun repo success ! and then rmi local image..."
-            docker rmi "${image_name}"
-            docker rmi registry.cn-hangzhou.aliyuncs.com/main-img/main-repo:"${image_name}"
-            echo "rmi local image success!"
+            echo "push to aliyun repo success!"
           done
 
     - name: login out aliyun docker repo
