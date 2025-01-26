@@ -35,6 +35,7 @@ jobs:
             image_name="${image//\//_}"
             image_name="${image_name//:/_}"
             docker tag "${image}" registry.cn-hangzhou.aliyuncs.com/main-img/main-repo:"${image_name}"
+            echo "pushing 【registry.cn-hangzhou.aliyuncs.com/main-img/main-repo:"${image_name}】 image to aliyun"
             docker push registry.cn-hangzhou.aliyuncs.com/main-img/main-repo:"${image_name}"
           done
 
