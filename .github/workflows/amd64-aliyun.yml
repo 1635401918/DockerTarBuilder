@@ -34,6 +34,7 @@ jobs:
             docker pull "${image}" --platform "linux/amd64"
             image_name="${image//\//_}"
             image_name="${image_name//:/_}"
+            image_name="${image_name}-amd64"
             docker tag "${image}" registry.cn-hangzhou.aliyuncs.com/main-img/main-repo:"${image_name}"
             echo "pushing 【registry.cn-hangzhou.aliyuncs.com/main-img/main-repo:${image_name}】 image to aliyun"
             docker push registry.cn-hangzhou.aliyuncs.com/main-img/main-repo:"${image_name}"
