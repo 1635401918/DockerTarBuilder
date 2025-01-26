@@ -32,8 +32,10 @@ jobs:
           IFS=',' read -r -a image_array <<< "$images"
           for image in "${image_array[@]}"; do
             docker pull "${image}" --platform "linux/amd64"
-            docker tag "${image}" registry.cn-hangzhou.aliyuncs.com/main-img/"${image}"
-            docker push registry.cn-hangzhou.aliyuncs.com/main-img/"${image}"
+            image_name="${image//\//_}"
+            image_name="${image_name//:/_}"
+            docker tag "${image}" registry.cn-hangzhou.aliyuncs.com/main-img/main-repo:"${image_name}"
+            docker push registry.cn-hangzhou.aliyuncs.com/main-img/main-repo:"${image_name}"
           done
 
     - name: login out aliyun docker repo
